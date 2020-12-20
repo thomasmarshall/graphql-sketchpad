@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import outdent from "outdent";
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import { execute } from "comlink-loader?singleton=true!./sketchpad";
+import "./App.css";
 
 const initialTypeDefs = outdent`
   type Query {
@@ -34,7 +35,7 @@ const App = () => {
   }, [typeDefs, query, mocks]);
 
   return (
-    <div>
+    <div className="App-sketchpad">
       <textarea
         aria-label="Schema"
         value={typeDefs}
