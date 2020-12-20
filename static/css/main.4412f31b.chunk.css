@@ -1,0 +1,2 @@
+body{margin:0}.App-sketchpad{--gap:1px;--span:calc(50% - var(--gap)/2);display:grid;grid-template-columns:var(--span) var(--span);grid-template-rows:var(--span) var(--span);grid-gap:var(--gap);height:100vh;background:#ccc}.App-sketchpad .CodeMirror{height:100%}
+/*# sourceMappingURL=main.4412f31b.chunk.css.map */
