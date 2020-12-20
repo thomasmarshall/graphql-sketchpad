@@ -26,12 +26,24 @@ it("displays the result", async () => {
     `
   );
 
+  userEvent.clear(screen.getByLabelText("Mocks"));
+  userEvent.type(
+    screen.getByLabelText("Mocks"),
+    outdent`
+      const mocks = {
+        Query: () => ({
+          example: () => "A mocked field",
+        }),
+      };
+    `
+  );
+
   await waitFor(() => {
     expect(screen.getByLabelText("Result")).toHaveValue(
       outdent`
         {
           "data": {
-            "example": "Hello World"
+            "example": "A mocked field"
           }
         }
       `
@@ -56,5 +68,15 @@ it("handles query errors", async () => {
 
   await waitFor(() => {
     expect(screen.getByLabelText("Result")).toHaveTextContent(/Syntax Error/);
+  });
+});
+
+it("handles mocking errors", async () => {
+  render(<App />);
+
+  userEvent.type(screen.getByLabelText("Mocks"), "invalid mocks");
+
+  await waitFor(() => {
+    expect(screen.getByLabelText("Result")).toHaveTextContent(/SyntaxError/);
   });
 });

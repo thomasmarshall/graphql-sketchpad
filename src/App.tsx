@@ -15,14 +15,23 @@ const initialQuery = outdent`
   }
 `;
 
+const initialMocks = outdent`
+  const mocks = {
+    Query: () => ({
+      example: () => "A mocked field",
+    }),
+  };
+`;
+
 const App = () => {
   const [typeDefs, setTypeDefs] = useState(initialTypeDefs);
   const [query, setQuery] = useState(initialQuery);
+  const [mocks, setMocks] = useState(initialMocks);
   const [result, setResult] = useState("");
 
   useEffect(() => {
-    execute({ typeDefs, query }).then(setResult);
-  }, [typeDefs, query]);
+    execute({ typeDefs, query, mocks }).then(setResult);
+  }, [typeDefs, query, mocks]);
 
   return (
     <div>
@@ -35,6 +44,11 @@ const App = () => {
         aria-label="Query"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+      />
+      <textarea
+        aria-label="Mocks"
+        value={mocks}
+        onChange={(e) => setMocks(e.target.value)}
       />
       <textarea aria-label="Result" value={result} readOnly />
     </div>
