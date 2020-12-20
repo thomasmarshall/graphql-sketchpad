@@ -25,6 +25,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "deploy": "yarn build && yarn gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,11 +50,13 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "prettier": "^2.2.1"
   },
   "jest": {
     "moduleNameMapper": {
       "^comlink-loader\\?singleton=true!(.+)$": "<rootDir>/src/$1"
     }
-  }
+  },
+  "homepage": "https://thomasmarshall.github.io/graphql-sketchpad"
 }
