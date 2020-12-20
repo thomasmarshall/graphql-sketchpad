@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import outdent from "outdent";
+import { Controlled as CodeMirror } from "react-codemirror2";
+import "codemirror/lib/codemirror.css";
+import "codemirror/mode/javascript/javascript";
+import "codemirror-graphql/mode";
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import { execute } from "comlink-loader?singleton=true!./sketchpad";
 import "./App.css";
@@ -50,22 +54,39 @@ const App = () => {
 
   return (
     <div className="App-sketchpad">
-      <textarea
-        aria-label="Schema"
+      <CodeMirror
+        options={{
+          screenReaderLabel: "Schema",
+          mode: "graphql",
+        }}
         value={typeDefs}
-        onChange={(e) => setTypeDefs(e.target.value)}
+        onBeforeChange={(editor, data, value) => setTypeDefs(value)}
       />
-      <textarea
-        aria-label="Query"
+      <CodeMirror
+        options={{
+          screenReaderLabel: "Query",
+          mode: "graphql",
+        }}
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onBeforeChange={(editor, data, value) => setQuery(value)}
       />
-      <textarea
-        aria-label="Mocks"
+      <CodeMirror
+        options={{
+          screenReaderLabel: "Mocks",
+          mode: "javascript",
+        }}
         value={mocks}
-        onChange={(e) => setMocks(e.target.value)}
+        onBeforeChange={(editor, data, value) => setMocks(value)}
       />
-      <textarea aria-label="Result" value={result} readOnly />
+      <CodeMirror
+        options={{
+          screenReaderLabel: "Result",
+          mode: { name: "javascript", json: true },
+          readOnly: true,
+        }}
+        value={result}
+        onBeforeChange={() => null}
+      />
     </div>
   );
 };

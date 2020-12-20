@@ -3,6 +3,16 @@ import userEvent from "@testing-library/user-event";
 import outdent from "outdent";
 import App, { serialize, deserialize } from "./App";
 
+jest.mock("react-codemirror2", () => ({
+  Controlled: (props: any) => (
+    <textarea
+      aria-label={props.options.screenReaderLabel}
+      value={props.value}
+      onChange={(e) => props.onBeforeChange(null, null, e.target.value)}
+    />
+  ),
+}));
+
 beforeEach(() => {
   window.location.replace("");
 });
