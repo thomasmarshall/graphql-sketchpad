@@ -58,6 +58,7 @@ const App = () => {
         options={{
           screenReaderLabel: "Schema",
           mode: "graphql",
+          lineNumbers: true,
         }}
         value={typeDefs}
         onBeforeChange={(editor, data, value) => setTypeDefs(value)}
@@ -66,6 +67,7 @@ const App = () => {
         options={{
           screenReaderLabel: "Query",
           mode: "graphql",
+          lineNumbers: true,
         }}
         value={query}
         onBeforeChange={(editor, data, value) => setQuery(value)}
@@ -74,6 +76,7 @@ const App = () => {
         options={{
           screenReaderLabel: "Mocks",
           mode: "javascript",
+          lineNumbers: true,
         }}
         value={mocks}
         onBeforeChange={(editor, data, value) => setMocks(value)}
@@ -82,6 +85,7 @@ const App = () => {
         options={{
           screenReaderLabel: "Result",
           mode: { name: "javascript", json: true },
+          lineNumbers: true,
           readOnly: true,
         }}
         value={result}
