@@ -11,12 +11,30 @@ import "./App.css";
 const initialTypeDefs = outdent`
   type Query {
     example: String!
+    users: [User!]!
+  }
+
+  type User {
+    name: String!
+    email: String!
+    comments: [Comment!]!
+  }
+
+  type Comment {
+    body: String!
   }
 `;
 
 const initialQuery = outdent`
   query {
     example
+    users {
+      name
+      email
+      comments {
+        body
+      }
+    }
   }
 `;
 
@@ -24,6 +42,10 @@ const initialMocks = outdent`
   const mocks = {
     Query: () => ({
       example: () => "A mocked field",
+    }),
+    User: () => ({
+      name: () => "Alex Smith",
+      email: () => "alex.smith@example.com",
     }),
   };
 `;
