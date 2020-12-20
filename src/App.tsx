@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import outdent from "outdent";
-import { execute } from "./sketchpad";
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import { execute } from "comlink-loader?singleton=true!./sketchpad";
 
 const initialTypeDefs = outdent`
   type Query {

@@ -12,6 +12,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "comlink-loader": "^2.0.0",
     "graphql": "^15.4.0",
     "outdent": "^0.8.0",
     "react": "^17.0.1",
@@ -46,5 +47,10 @@
   },
   "devDependencies": {
     "prettier": "^2.2.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^comlink-loader\\?singleton=true!(.+)$": "<rootDir>/src/$1"
+    }
   }
 }
