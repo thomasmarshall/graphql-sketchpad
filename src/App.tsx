@@ -24,6 +24,9 @@ const initialMocks = outdent`
   };
 `;
 
+export const serialize = (object: Object) => btoa(JSON.stringify(object));
+export const deserialize = (string: string) => JSON.parse(atob(string));
+
 const App = () => {
   const [typeDefs, setTypeDefs] = useState(initialTypeDefs);
   const [query, setQuery] = useState(initialQuery);
@@ -31,7 +34,18 @@ const App = () => {
   const [result, setResult] = useState("");
 
   useEffect(() => {
+    try {
+      const data = deserialize(window.location.hash.slice(1));
+
+      setTypeDefs(data.typeDefs);
+      setQuery(data.query);
+      setMocks(data.mocks);
+    } catch (err) {}
+  }, []);
+
+  useEffect(() => {
     execute({ typeDefs, query, mocks }).then(setResult);
+    window.location.replace("#" + serialize({ typeDefs, query, mocks }));
   }, [typeDefs, query, mocks]);
 
   return (
