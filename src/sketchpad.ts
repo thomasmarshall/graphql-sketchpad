@@ -1,6 +1,9 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { addMocksToSchema } from "@graphql-tools/mock";
 import { graphqlSync } from "graphql";
+import faker from "faker";
+
+(global as any).faker = faker;
 
 export const execute = async ({
   typeDefs,

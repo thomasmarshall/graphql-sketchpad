@@ -41,7 +41,7 @@ const initialQuery = outdent`
 const initialMocks = outdent`
   const mocks = {
     Query: () => ({
-      example: () => "A mocked field",
+      example: () => faker.random.words(2),
     }),
     User: () => ({
       name: () => "Alex Smith",
