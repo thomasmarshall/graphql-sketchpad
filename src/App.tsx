@@ -9,6 +9,11 @@ import { execute } from "comlink-loader?singleton=true!./sketchpad";
 import "./App.css";
 
 const initialTypeDefs = outdent`
+  # GraphQL Sketchpad is a tool for quickly sketching out GraphQL APIs
+  # https://github.com/thomasmarshall/graphql-sketchpad
+
+  # Design your schema here
+
   type Query {
     example: String!
     users: [User!]!
@@ -26,6 +31,8 @@ const initialTypeDefs = outdent`
 `;
 
 const initialQuery = outdent`
+  # Perform queries/mutations against the schema
+
   query {
     example
     users {
@@ -39,6 +46,8 @@ const initialQuery = outdent`
 `;
 
 const initialMocks = outdent`
+  // Add custom mock resolvers
+
   const mocks = {
     Query: () => ({
       example: () => faker.random.words(2),
