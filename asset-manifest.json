@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/graphql-sketchpad/static/css/main.4412f31b.chunk.css",
-    "main.js": "/graphql-sketchpad/static/js/main.ebfd2bff.chunk.js",
-    "main.js.map": "/graphql-sketchpad/static/js/main.ebfd2bff.chunk.js.map",
+    "main.js": "/graphql-sketchpad/static/js/main.c37677b3.chunk.js",
+    "main.js.map": "/graphql-sketchpad/static/js/main.c37677b3.chunk.js.map",
     "runtime-main.js": "/graphql-sketchpad/static/js/runtime-main.1241e09f.js",
     "runtime-main.js.map": "/graphql-sketchpad/static/js/runtime-main.1241e09f.js.map",
     "static/css/2.f18cf14f.chunk.css": "/graphql-sketchpad/static/css/2.f18cf14f.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.f18cf14f.chunk.css",
     "static/js/2.24629699.chunk.js",
     "static/css/main.4412f31b.chunk.css",
-    "static/js/main.ebfd2bff.chunk.js"
+    "static/js/main.c37677b3.chunk.js"
   ]
 }
