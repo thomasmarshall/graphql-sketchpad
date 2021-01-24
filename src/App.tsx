@@ -15,7 +15,6 @@ const initialTypeDefs = outdent`
   # Design your schema here
 
   type Query {
-    example: String!
     users: [User!]!
   }
 
@@ -27,19 +26,23 @@ const initialTypeDefs = outdent`
 
   type Comment {
     body: String!
+    createdAt: Timestamp!
   }
+
+  scalar Timestamp
 `;
 
 const initialQuery = outdent`
   # Perform queries/mutations against the schema
 
   query {
-    example
     users {
       name
       email
+
       comments {
         body
+        createdAt
       }
     }
   }
@@ -50,13 +53,17 @@ const initialMocks = outdent`
 
   const mocks = {
     Query: () => ({
-      example: () => faker.random.words(2),
-      users: () => new MockList(4),
+      users: () => new MockList([2, 6])
     }),
     User: () => ({
-      name: () => "Alex Smith",
-      email: () => "alex.smith@example.com",
+      name: () => faker.name.findName(),
+      email: () => faker.internet.email(),
+      comments: () => new MockList([0, 3])
     }),
+    Comment: () => ({
+      body: () => faker.lorem.sentences(2),
+    }),
+    Timestamp: () => new Date(),
   };
 `;
 
