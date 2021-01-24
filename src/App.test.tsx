@@ -68,6 +68,7 @@ it("displays the result", async () => {
 it("handles schema errors", async () => {
   render(<App />);
 
+  userEvent.clear(screen.getByLabelText("Schema"));
   userEvent.type(screen.getByLabelText("Schema"), "invalid schema");
 
   await waitFor(() => {
@@ -78,6 +79,7 @@ it("handles schema errors", async () => {
 it("handles query errors", async () => {
   render(<App />);
 
+  userEvent.clear(screen.getByLabelText("Query"));
   userEvent.type(screen.getByLabelText("Query"), "invalid query");
 
   await waitFor(() => {
@@ -88,6 +90,7 @@ it("handles query errors", async () => {
 it("handles mocking errors", async () => {
   render(<App />);
 
+  userEvent.clear(screen.getByLabelText("Mocks"));
   userEvent.type(screen.getByLabelText("Mocks"), "invalid mocks");
 
   await waitFor(() => {
